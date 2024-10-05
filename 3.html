@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project</title>
+</head>
+<body>
+    <h1>Interval</h1>
+    <button id="Start">Start</button>
+    <button id="Stop">Stop</button> 
+
+    <script>
+        const randomcolor = function() {
+            const hex = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) { // Run the loop 6 times to generate a valid hex color
+                color += hex[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        };
+
+        let interval;
+        const startChangingcolor = function() {
+            if (!interval) {
+                interval = setInterval(changecolor, 1000);
+            }
+        };
+
+        function changecolor() {
+            document.body.style.backgroundColor = randomcolor();
+        }
+
+        const stopChangingcolor = function() {
+            clearInterval(interval);
+            interval = null;
+        };
+
+        document.querySelector('#Start').addEventListener('click', startChangingcolor);
+        document.querySelector('#Stop').addEventListener('click', stopChangingcolor);
+    </script>
+</body>
+</html>
